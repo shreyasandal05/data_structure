@@ -1,13 +1,21 @@
 // LinkList.cpp
 // 30.12.2020
 #include<stdio.h>
+#include<process.h>
 #include<stdlib.h>
 
 struct node{
-    int data;
+    int info;
     struct node* link;
 };
 struct node* start=NULL;
+
+void create();
+void traverse();
+void insert_beg();
+void insert_last();
+void insert_after();
+void delete_beg();
 
 int main(){
     int choice;
@@ -41,6 +49,10 @@ int main(){
             case 4:
             insert_after();
             break;
+            case 5:
+            delete_beg();
+            break;
+            case 6:exit(0);
             default :
             printf("Invalid choice.");
         }
@@ -51,12 +63,12 @@ int main(){
 void create(){
     struct node *new,*ptr;
     int item;
-    char ans;
+    char ans='y';
     while(ans=='y'||ans=='Y')
     {
         printf("Enter item value: ",item);
         scanf("%d",&item);
-        new=(struct node*)malloc(sizeof(struct node*));
+        new=(struct node*)malloc(sizeof(struct node));
         if(new==NULL){
             printf("Memory overflow\n");
             return;
@@ -100,7 +112,7 @@ void traverse(){
 void insert_beg(){
     struct node *new;
     int item;
-    new=(struct node*)malloc(sizeof(struct node*));
+    new=(struct node*)malloc(sizeof(struct node));
     if(new==NULL){
         printf("memory overflow\n");
         return;
@@ -115,13 +127,13 @@ void insert_beg(){
 void insert_last(){
     struct node* new,*ptr;
     int item;
-    new=(struct node*)malloc(sizeof(struct node*));
+    new=(struct node*)malloc(sizeof(struct node));
     if(new==NULL){
         printf("Memory overflow\n");
         return;
     }
     printf("Enter item value: ");
-    scanf("%d",item);
+    scanf("%d",&item);
     new->info=item;
     new->link=NULL;
     if(start==NULL){
@@ -141,11 +153,11 @@ void insert_last(){
 void insert_after(){
     struct node* new,*ptr;
     int item,i,pos;
-    new=(struct node*)malloc(sizeof(struct node*));
-    if(new==NULL)[
+    new=(struct node*)malloc(sizeof(struct node));
+    if(new==NULL){
         printf("Memory overflow\n");
         return;
-    ]
+    }
     printf("Enter item value: ");
     scanf("%d",&item);
     printf("Enter position after which you want to insert: ");
