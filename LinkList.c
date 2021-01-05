@@ -16,6 +16,11 @@ void insert_beg();
 void insert_last();
 void insert_after();
 void delete_beg();
+void delete_last();
+void delete_after();
+void search();
+void sorting();
+void dup();
 
 int main(){
     int choice;
@@ -52,7 +57,22 @@ int main(){
             case 5:
             delete_beg();
             break;
-            case 6:exit(0);
+            case 6:
+            delete_last();
+            break;
+            case 7:
+            delete_after();
+            break;
+            case 8:
+            search();
+            break;
+            case 9:
+            sorting();
+            break;
+            case 10:
+            dup();
+            break;
+            case 11: exit(0);
             default :
             printf("Invalid choice.");
         }
@@ -188,3 +208,117 @@ void delete_beg(){
     free(temp);
 }
 
+void delete_last(){
+    struct node *ptr,*save;
+    if(start==NULL){
+        printf("Underflow");
+        return;
+    }
+    if(start->link==NULL){
+        ptr=start;
+        start=start->link;
+    }
+    save=start;
+    ptr=start->link;
+    while(ptr->link!=NULL){
+        save=ptr;
+        ptr=ptr->link;
+    }
+    save->link=NULL;
+    printf("Deleted node is %d",ptr->info);
+    free(ptr);
+}
+
+void delete_after(){
+    struct node *ptr,*temp;
+    int i,pos;
+    if(start==NULL){
+        printf("\nUnderflow");
+        return;
+    }
+    printf("Enter position ");
+    scanf("%d",&pos);
+    temp=start;
+    ptr=start->link;
+    for(i=1;i<pos;i++){
+        temp=ptr;
+        ptr=ptr->link;
+        if(ptr=NULL){
+            printf("\nInvalid position");
+            return;
+        }
+    }
+    printf("\nDeleted node is: %d",ptr->info);
+    temp->link=ptr->link;
+free(ptr);
+}
+
+void search(){
+    struct node *ptr;
+    int item,i;
+    if(start==NULL){
+        printf("List is empty\n");
+        return;
+    }
+    printf("Enter item you want to find: ");
+    scanf("%d",&item);
+    ptr=start;
+    i=1;
+    while(ptr!=NULL){
+        if(ptr->info==item){
+            printf("%d found at %d position",item,i);
+            break;
+        }
+        i++;
+        ptr=ptr->link;
+    }
+    if(ptr=NULL){
+        printf("\n%d Item not found",item);
+        
+    }
+}
+
+void sorting(){
+    struct node *ptr,*ptr1;
+    int temp;
+    if(start==NULL){
+        printf("List if empty");
+        return;
+    }
+    for(ptr=start;ptr->link!=NULL;ptr=ptr->link){
+        for(ptr1=ptr->link;ptr1!=NULL;ptr1=ptr1->link)
+        if(ptr->info>ptr1->info){
+            temp=ptr->info;
+            ptr->info=ptr1->info;
+            ptr1->info=temp;
+        }
+    }
+}
+
+void dup(){
+    struct node* ptr,*ptr1,*prev,*temp;
+    int data;
+    if(start==NULL){
+        printf("underflow");
+        return;
+    }
+    ptr=start;
+    while(ptr!=NULL){
+        data=ptr->info;
+        prev=ptr;
+        ptr1=ptr->link;
+        while(ptr1!=NULL){
+            if(data==ptr1->info){
+                temp=ptr1;
+                prev->link=ptr1->link;
+                ptr1=ptr1->link;
+                free(temp);
+            }
+            else{
+                prev=ptr1;
+                ptr1=ptr1->link;
+            }
+        }
+    ptr=ptr->link;
+    }
+}
