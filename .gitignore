@@ -1,17 +1,1 @@
-# ignoring .exe files
-
-Backtracking_generate_all_the_binary_strings_of_n_bits.exe
-Backtracking_generate_k-ary_strings.exe
-Backtracking_n_queens_problem.exe
-Backtracking_rat_in_maze.exe
-Queue.exe
-Stack.exe
-Tower_of_hanoi.exe
-Tree_inorder_traversal.exe
-Tree_postorder_traversal.exe
-Tree_preorder_traversal.exe
-LinkList.exe
-Backtracking_Hamiltonian_cycle.exe
-NonRecursive_inorder_traversal.exe
-NonRecursive_postorder_traversal.exe
-NonRecursive_preorder_traversal.exe
+*.exe
