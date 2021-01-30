@@ -2,7 +2,6 @@
 #include<stack>
 #include<stdlib.h>
 #include<iostream>
-#define MAXSTK 5
 
 using namespace std;
 
