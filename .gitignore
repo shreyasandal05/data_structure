@@ -11,3 +11,5 @@ Tree_inorder_traversal.exe
 Tree_postorder_traversal.exe
 Tree_preorder_traversal.exe
 LinkList.exe
+Backtracking_Hamiltonian_cycle.exe
+NonRecursive_inorder_traversal.exe
